@@ -1,6 +1,7 @@
 const express = require('express');
 const  bodyParser = require("body-parser");
-const pingHandler = require('./backend/ping-handler');
+const questionsHandler = require('./backend/questions-handler');
+const answersHandler = require('./backend/answers-handler');
 
 // Constants
 const PORT = 8080;
@@ -14,7 +15,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../build/index.html'));
 });
 
-app.get('/ping', pingHandler);
+app.get('/questions', questionsHandler);
+app.post('/answers', answersHandler);
 
 app.use(express.static('build'));
 
